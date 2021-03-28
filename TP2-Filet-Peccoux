@@ -1,0 +1,111 @@
+def Point_Fixe(g,x0,epsilon,Nintermax):
+
+    xold = x0
+    xnew = g(xold)
+    n = 1
+    Nitermax = 0
+    
+    while abs(xnew-xold) > epsilon and n < Nitermax : 
+        xold = xnew
+        xnew = g(x0)
+        n = n + 1
+    return xnew,n 
+
+from math import * 
+
+def g0(x):
+    return (1 + sin (x))/2
+
+# 1. x**4 + 3x = 9
+
+def g1(x) :
+    return (-3*x + 9)**(1/4)
+
+print(Point_Fixe(g1,1,1e-6,5e4))
+
+def g1bis(x) :
+    return -(-3*x + 9)**(1/4)
+
+print(Point_Fixe(g1bis,-2,-2.5,-1.5))
+
+# 2. x = 3*cos(x) −2 
+
+def g2(x) :
+    return acos((x+2)/3)
+
+print(Point_Fixe(g2,0.5,0,1))
+
+def g2bis(x) :
+    return -acos((x+2)/3)
+
+print(Point_Fixe(g2bis,-1.4,-1.5,-1))
+
+def g2_bis(x):
+    return acos((x+2)/3)-(2*pi)
+
+print(Point_Fixe(g2_bis,-4.1,-4.5,-3.5))
+
+# 3
+
+def g3(x) :
+    return log(7/x)
+
+print(Point_Fixe(g3,1.5,1.25,2))
+
+# 4
+
+def g4(x) :
+    return log(10 + x)
+
+print(Point_Fixe(g4,2.5,2,3))
+
+def g4bis(x) :
+    return exp(x) - 10 
+
+print(Point_Fixe(g4bis,-10.2,-11.5,-9.5))
+
+# 5
+def g5(x) :
+    return atan((x+5)/2)
+
+print(Point_Fixe(g5,1.3,1,2))
+
+# 6
+
+def g6(x) :
+    return log((x**2) + 3)
+
+print(Point_Fixe(g6,1.88,1,3))
+
+# 7
+
+def g7(x) :
+    return -(4/3)*(log(x))+(7/3)
+
+print(Point_Fixe(g7,1.65,1,2))
+
+# 8
+
+def g8(x) :
+    return ((17-4*x)/((x**2)-2))**(1/2)
+
+print(Point_Fixe(g8,2,2,2.5))
+
+def g8bis(x) :
+    return -((17-4*x)/((x**2)-2))**(1/2)
+
+print(Point_Fixe(g8bis,-2.5,-2.6,-2.4))
+
+# 9
+
+def g9(x) :
+    return log(2*sin(x)+7)
+
+print(Point_Fixe(g9,2.16,2,3))
+
+# 10
+
+def g10(x) :
+    return log(10/(log((x**2)+4)))
+
+print(Point_Fixe(g10,1.66,1,2))
